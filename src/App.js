@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { Component, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Congrats from './components/Congrats';
 
-function App() {
+class App extends Component {
+
+
+  constructor(props) {
+
+    super(props);
+    this.state = {
+      counter:0
+    }
+
+  }
+
+
+render(){
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+    <div data-test="component-app" className="App">
+     <h1 data-test="counter-display">The counter is currently {this.state.counter}</h1>
+     <button data-test="increment-button" onClick={()=>{this.setState({counter:this.state.counter+1})}}>Increment Counter</button>
+     <Congrats></Congrats>
     </div>
   );
-}
+}}
 
 export default App;
